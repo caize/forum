@@ -1,30 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from './components/App'
-import TopTopics from './components/TopTopics'
-import NewTopics from './components/NewTopics'
+import App from './App.vue'
+import { createRouter } from "./router";
 
-Vue.use(VueRouter)
-
-const routes = [
-	{
-		path: '/',
-		component: TopTopics
-	},
-	{
-		path: '/new',
-		component: NewTopics
-	}
-]
-
-const router = new VueRouter({
-	routes,
-	mode: 'history'
-})
+const router = createRouter()
 
 new Vue({
-    el: '#app',
-	template: '<App />',
-	components: {App},
-	router
-}).$mount('#app');
+	el: '#app',
+	router,
+	render: h => h(App)
+})
