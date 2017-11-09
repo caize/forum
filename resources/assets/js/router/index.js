@@ -11,7 +11,7 @@ export function createRouter () {
 		mode: 'history',
 		fallback: false,
 		routes: [
-			{ path: '/', component: TopTopics },
+			{ path: '/:page(\\d+)?', component: TopTopics },
 			{ path: '/new', component: NewTopics },
 			{ path: '/t/:slug', component: TopicView },
 		]

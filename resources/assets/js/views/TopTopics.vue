@@ -15,33 +15,20 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import Pagination from '../components/Pagination'
-	import axios from 'axios'
+
 	export default {
 		name: 'top-topics',
 
 		components: { Pagination },
 
-		data () {
-			return {
-				topics: ''
-			}
-		},
+		computed: mapGetters({
+			topics: 'topics',
+		}),
 
 		mounted () {
-			this.fetchTopics()
-		},
-
-		methods: {
-			fetchTopics () {
-				axios.get('/api/topics/top')
-					.then(response => {
-						this.topics = response.data
-					})
-					.catch(e => {
-						console.error(e)
-					})
-			}
+			this.$store.dispatch('fetchTopTopics')
 		}
 	}
 </script>

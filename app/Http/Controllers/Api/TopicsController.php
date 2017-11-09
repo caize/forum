@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 
 class TopicsController extends Controller
 {
+	private $perPage = 10;
+
 	public function top()
 	{
-		return Topic::all();
+		return Topic::paginate($this->perPage);
     }
 
     public function new()
